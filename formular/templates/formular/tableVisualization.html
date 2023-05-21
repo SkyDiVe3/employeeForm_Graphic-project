@@ -1,0 +1,31 @@
+{% extends 'formular/base.html' %}
+    {% block content%}
+    {% load static %}  
+<div class="container mx-auto h-820 w-1440">
+    <div id="show_Table" class="mx-auto h-300 w-450 mt-5">
+
+        <table class="table table-light table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Url</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {%for number,project in projects%}
+                <tr>
+                    <td scope="row">{{number}}</td>
+                    <td>{{project.title}}</td>
+                    <td>{{project.description}}</td>
+                    <td><a href="{{project.url}}">Click here please</a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock content%}

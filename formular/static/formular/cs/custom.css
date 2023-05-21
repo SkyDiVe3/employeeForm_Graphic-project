@@ -1,0 +1,64 @@
+body {
+    background-color: #BE3455;
+    margin: 0;
+    padding: 0;
+}
+
+/*Visualisation*/
+/*#show_Table {
+    margin-top: 100px;
+    padding: 0 ; 
+
+}*/
+
+.base_Wrap{
+    width: 1920px;
+    height: 1280px;
+
+}
+
+.form_parent{
+    display: flex;
+    width: 400px;  
+    height: 450px;
+
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 2px white solid;
+    border-radius: 10px;
+    background-color: ;
+}
+
+.form-control {
+    background: #D0ABAB;
+    border-radius: 30px;
+
+}
+
+.navbar {
+  margin-top: 10px;
+  background-color: indianred !important;
+  border-bottom: 3px solid black !important; 
+  border-radius: 20px;
+  font-family: Consolas;
+
+
+}
+.navbar .navbar-brand{
+    margin-left: 10px;
+
+}
+.navbar .nav-link{
+
+}
+
+.invalid-feedback{
+    color: skyblue;
+}
+
+.valid-feedback{
+    color: darkgray;
+}
+
