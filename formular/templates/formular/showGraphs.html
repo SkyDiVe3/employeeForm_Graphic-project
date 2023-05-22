@@ -1,0 +1,27 @@
+{% extends 'formular/base.html' %}
+{% block content%}
+{% load static %}  
+ 
+    <div class="container my-5">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h2 class="card-title">Repartiția pe genuri a angajaților</h2>
+                <img src="..\media\formular\graphs\pie_chart.png" alt="Pie Chart" class="img-fluid">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h2 class="card-title">Repartiția joburilor de angajați</h2>
+                <img src="..\media\formular\graphs\job_histogram.png" alt="Job Histogram" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+
+{% endblock content%}

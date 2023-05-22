@@ -4,19 +4,13 @@ body {
     padding: 0;
 }
 
-/*Visualisation*/
-/*#show_Table {
-    margin-top: 100px;
-    padding: 0 ; 
-
-}*/
-
 .base_Wrap{
     width: 1920px;
     height: 1280px;
 
 }
 
+/* Formular styles */
 .form_parent{
     display: flex;
     width: 400px;  
@@ -28,7 +22,7 @@ body {
     text-align: center;
     border: 2px white solid;
     border-radius: 10px;
-    background-color: ;
+    background: linear-gradient(180deg, rgba(176,40,72,1) 51%, rgba(212,143,159,1) 80%, rgba(255,255,255,1) 96%, rgba(0,0,0,1) 100%);
 }
 
 .form-control {
@@ -36,29 +30,76 @@ body {
     border-radius: 30px;
 
 }
-
-.navbar {
-  margin-top: 10px;
-  background-color: indianred !important;
-  border-bottom: 3px solid black !important; 
-  border-radius: 20px;
-  font-family: Consolas;
-
-
-}
-.navbar .navbar-brand{
-    margin-left: 10px;
-
-}
-.navbar .nav-link{
-
-}
-
 .invalid-feedback{
     color: skyblue;
 }
 
 .valid-feedback{
-    color: darkgray;
+    color: darkturquoise;
+    border: 1px green dotted;
+/*    font-size: ;*/
+   
+
 }
 
+/* Navigation bar styles  */
+
+.navbar {
+  margin-top: 10px;
+  background-color: #BB4D26 !important;
+  border-bottom: 3px solid black !important; 
+  border-radius: 20px;
+  font-family: Consolas;
+  font-size: 20px;
+
+
+}
+
+.navbar .navbar-brand{
+    margin-left: 10px;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+
+    padding-right: 5px;
+    border-radius: 35%;
+}
+
+.navbar-expand-lg  {
+    display: flex !important;
+    flex-basis: auto;
+    justify-content: center;
+
+}
+
+.navbar-collapse {
+    ::before
+    flex-basis: 100%;
+    flex-grow: 1;
+    text-align: center;
+    justify-content: center;
+    margin-left: -15%;
+}
+
+.navbar a:hover{
+    border-bottom: 3px groove floralwhite;
+}
+
+/* Graph stylings */
+
+.graph-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.graph-container h2 {
+  margin: 10px 0;
+}
+
+.graph-container img {
+  width: 400px;
+  height: auto;
+  margin: 10px;
+}

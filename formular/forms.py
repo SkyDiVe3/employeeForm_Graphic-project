@@ -1,4 +1,5 @@
 from django import forms
+from .models import Employee
 
 class CustomTextInput(forms.TextInput):
     def __init__(self, placeholder, *args, **kwargs):
@@ -8,6 +9,7 @@ class CustomTextInput(forms.TextInput):
         self.attrs['required'] = True  # Set the field as required
 
 class CustomSelect(forms.Select):
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.attrs['class'] = 'form-select my-1'  # Add 'form-select' class for styling
@@ -40,6 +42,10 @@ class CustomSelect(forms.Select):
         return option
 
 class EmployeeForm(forms.Form):
+    jobTitles = list(Employee.JOB_CHOICES)
+    default_choice = ('', "Choose..")
+    full_job_choices = [default_choice] + jobTitles
+
     firstname = forms.CharField(label='First Name', max_length=30, widget=CustomTextInput(placeholder='Name'))
     lastname = forms.CharField(label='Last Name', max_length=30, widget=CustomTextInput(placeholder='Lastname'))
 
@@ -48,8 +54,10 @@ class EmployeeForm(forms.Form):
         choices=[('other', 'Other'), ('male', 'Male'), ('female', 'Female')],
         widget=CustomSelect()
     )
+
+
     jobCategories = forms.ChoiceField(
         label='Job Title:',
-        choices=[('', 'Choose...'),('hr', 'HR'), ('softDev', 'Software Dev'), ('tester', 'Tester')],
+        choices=full_job_choices,
         widget=CustomSelect()
     )

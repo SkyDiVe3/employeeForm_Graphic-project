@@ -18,8 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from formular import views
 
+from django.conf.urls.static import static
+from django.conf import settings
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name ='home'),
     path('show/', views.showTableDB, name = 'showTableDB'),
-]
+    path('graphs/', views.graphs, name = 'graphs'),
+    path('delete_employee/<int:employee_id>/', views.delete_employee, name='delete_employee'),
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

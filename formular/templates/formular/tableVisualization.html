@@ -2,25 +2,35 @@
     {% block content%}
     {% load static %}  
 <div class="container mx-auto h-820 w-1440">
-    <div id="show_Table" class="mx-auto h-300 w-450 mt-5">
+    <div class="mx-auto h-300 w-450 mt-5">
 
         <table class="table table-light table-striped">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Url</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Actions</th> <!-- Adăugat coloana pentru acțiuni -->
+
                 </tr>
             </thead>
             <tbody>
 
-                {%for number,project in projects%}
+                {%for number,employee in employes%}
                 <tr>
                     <td scope="row">{{number}}</td>
-                    <td>{{project.title}}</td>
-                    <td>{{project.description}}</td>
-                    <td><a href="{{project.url}}">Click here please</a></td>
+                    <td>{{employee.first_name}}</td>
+                    <td>{{employee.last_name}}</td>
+                    <td>{{employee.gender}}</td>
+                    <td>{{employee.job_category}}</td>
+                    <td>
+                        <form method="POST" action="{% url 'delete_employee' employee.id %}"> <!-- Formular pentru ștergere -->
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button> <!-- Buton de ștergere -->
+                        </form>
+                    </td>
                 </tr>
                 {%endfor%}
             </tbody>
