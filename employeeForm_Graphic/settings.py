@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-d-a3yne9^jg(s@m&=uggh
 DEBUG = True
 
 ALLOWED_HOSTS = ['employeeformgraphic-project-production.up.railway.app', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://employeeformgraphic-project-production.up.railway.app']
 
 
 # Application definition
