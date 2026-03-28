@@ -20,7 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d-a3yne9^jg(s@m&=uggh6pk-o7xmfs_3)cdl8$hjsnxr10nxi2'
+# In production, set this via the SECRET_KEY environment variable.
+import os
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-d-a3yne9^jg(s@m&=uggh6pk-o7xmfs_3)cdl8$hjsnxr10nxi2')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,18 +75,32 @@ WSGI_APPLICATION = 'employeeForm_Graphic.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+#
+# Default: SQLite (zero-configuration, suitable for development and testing).
+# For production with MySQL, set the DB_ENGINE environment variable to
+# 'django.db.backends.mysql' and provide the other DB_* variables below.
 
-DATABASES = {
-     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'database_name',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+_db_engine = os.environ.get('DB_ENGINE', 'django.db.backends.sqlite3')
+
+if _db_engine == 'django.db.backends.sqlite3':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': _db_engine,
+            'NAME': os.environ.get('DB_NAME', 'employee_db'),
+            'USER': os.environ.get('DB_USER', 'root'),
+            'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+            'HOST': os.environ.get('DB_HOST', '127.0.0.1'),
+            'PORT': os.environ.get('DB_PORT', '3306'),
+            'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+        }
+    }
 
 
 # Password validation
@@ -122,6 +138,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'formular' / 'static',
+]
+
+# Media files (uploaded/generated images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

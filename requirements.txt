@@ -5,7 +5,9 @@ Django==4.2.1
 fonttools==4.39.4
 kiwisolver==1.4.4
 matplotlib==3.7.1
-mysqlclient==2.1.1
+# mysqlclient is only required when using MySQL as the database backend.
+# Install it manually if you set DB_ENGINE=django.db.backends.mysql.
+# mysqlclient==2.1.1
 numpy==1.24.3
 packaging==23.1
 Pillow==9.5.0
