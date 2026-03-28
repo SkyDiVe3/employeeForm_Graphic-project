@@ -9,7 +9,7 @@ import os
 
 from .forms import EmployeeForm  # importați formularul corespunzător
 
-from .static.formular.python.graphScripts import create_employee_graphs
+from .graph_utils import create_employee_graphs
 
 def home(request):
     
@@ -39,7 +39,7 @@ def home(request):
     else:
         form = EmployeeForm()
 
-    return render(request, '../templates/formular/home.html',{"form": form})
+    return render(request, 'formular/home.html', {"form": form})
     
 
 def showTableDB(request):
@@ -50,7 +50,7 @@ def showTableDB(request):
     projects_with_numbers = [(i+1, obj) for i, obj in enumerate(employes)]
 
     # Render the 'tableVisualization.html' template with the employes data passed as context
-    return render(request, '../templates/formular/tableVisualization.html', {"employes" : projects_with_numbers})
+    return render(request, 'formular/tableVisualization.html', {"employes" : projects_with_numbers})
 
 def graphs(request):
 
@@ -71,7 +71,7 @@ def graphs(request):
     create_employee_graphs(Employee, pie_chart_path, histogram_path)
 
     
-    return render(request, '../templates/formular/showGraphs.html')
+    return render(request, 'formular/showGraphs.html')
 
 def delete_employee(request, employee_id):
 
